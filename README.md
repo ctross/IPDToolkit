@@ -66,12 +66,12 @@ A = rnorm(12,0,0.5)
 B = rep(0,12)
 B[c(4,8)] = 2
 B[c(6,10)] = -2
-strat <- rep(NA, N)
+strat = rep(NA, N)
 
 C <- c(-3.7, 2.5)
 dispersion <- 40
 
-Xi <- rep(NA, N)
+Xi = rep(NA, N)
 
 for(i in 1:N){
      Q = A + B*Z[i]	
@@ -98,10 +98,12 @@ And again check performance of our models:
 create_stan_models(path)
 f3a = fit_IPD_optim(d,covariates=as.matrix(Z),n_strategies=12)
 
-babynames = c("Olivia","Gianna","Oliver","Elijah","William","Layla","Chloe","Aria","Mia","Alexander","Mason","Michael","Ethan","Daniel","Jacob","Logan","Jackson","Levi",
-"Sebastian","Mateo","Jack","Sophia","Camila","Aiden","Samuel","Penelope","John","David","Wyatt","Matthew","Luke","Asher","Carter","Julian","Scarlett","Leo",
-"Jayden","Mia","Isaac","Abigail","Ajira","Hudson","Luna","Ezra","Thomas","Charles","Christopher","Jaxon","Maverick","Josiah","Isaiah","Andrew","Elias",
-"Nora","Nathan","Caleb","Ryan","Adrian","Miles","Eli")
+babynames = c("Olivia","Gianna","Oliver","Elijah","William","Layla","Chloe","Aria","Mia","Alexander",
+	          "Mason","Michael","Ethan","Daniel","Jacob","Logan","Jackson","Levi","Sebastian","Mateo",
+	          "Jack","Sophia","Camila","Aiden","Samuel","Penelope","John","David","Wyatt","Matthew",
+	          "Luke","Asher","Carter","Julian","Scarlett","Leo","Jayden","Mia","Isaac","Abigail","Ajira",
+	          "Hudson","Luna","Ezra","Thomas","Charles","Christopher","Jaxon","Maverick","Josiah","Isaiah",
+	          "Andrew","Elias","Nora","Nathan","Caleb","Ryan","Adrian","Miles","Eli")
 
 d$players = paste0(babynames,"(",strat,")")
 
