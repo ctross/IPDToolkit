@@ -37,3 +37,16 @@ To visualize play between specific strategy types, use the sequence_plot functio
  ggsave("TFTvGTFT.pdf", p3, width=8*0.9,height=8*0.9)
  ggsave("TFTvTFTA.pdf", p4, width=8*0.9,height=8*0.9)
 ```
+
+To run a large round-robin, run:
+```{r}
+set.seed(1)
+ d = simulate_round_robin(
+ 	   players=c("ALLD","ALLC","RANDY","TFT","TF2T","GTFT","WSLS","TFTA","TF2TA","GTFTA","WSLSA","ATFT"), 
+       n_rounds=50,
+       error_rate=0.2, 
+       arb_error_rate_type_1=0.5, 
+       arb_error_rate_type_2=0.2
+       )
+```
+       
