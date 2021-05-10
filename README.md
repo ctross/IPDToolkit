@@ -48,4 +48,42 @@ set.seed(1)
        arb_error_rate_type_2=0.2
        )
 ```
-       
+
+To run a bunch of random matchups, where strategy use and sneak rate vary as a function of an individual-level covariate, run:
+```{r}
+set.seed(1)
+N = 60
+Z = rbinom(N,size=1, prob=0.5)
+strategies = c("ALLD","ALLC","RANDY","TFT","TF2T","GTFT","WSLS","TFTA","TF2TA","GTFTA","WSLSA","ATFT")
+A = rnorm(12,0,0.5)
+B = rep(0,12)
+B[c(4,8)] = 2
+B[c(6,10)] = -2
+strat <- rep(NA, N)
+
+C <- c(-3.7, 2.5)
+dispersion <- 40
+
+Xi <- rep(NA, N)
+
+for(i in 1:N){
+     Q = A + B*Z[i]	
+     Q[1] = 0
+     strat[i] = strategies[which(rmultinom(1, size=1, prob=softmax(Q))==1)]
+     Xi[i] = rbeta(1,logistic(C[1] + C[2]*Z[i] )*dispersion, (1-logistic(C[1] + C[2]*Z[i] ))*dispersion)
+     }
+table(strat,Z)
+plot(Xi~Z)
+
+
+ d = simulate_round_robin(
+ 	   players=strat,
+       n_rounds=30,
+       error_rate=0.2,
+       arb_error_rate_type_1=0.5,
+       arb_error_rate_type_2=0.2,
+       mode="random",
+       n_games = 160,
+       xi=Xi
+       )
+       ```
