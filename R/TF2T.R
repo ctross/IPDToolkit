@@ -1,0 +1,41 @@
+#' TF2T function file
+#'
+#' @param 
+#' i The round ID code
+#' @param 
+#' standing A vector of standing.
+#' @return A vector of information.
+#' \itemize{
+#'   \item Cell 1 - Did the player cooperate
+#'   \item Cell 2 - Did the player intend tocooperate
+#'   \item Cell 3 - Did the computer introduce an error?
+#'   \item Cell 4 - Did the player call the arbitrator?
+#'   \item Cell 5 - Did the arbitrator declare an error occured?
+#'   \item Cell 6-7 - Returned standing.
+#'   \item Cell 8-9 - Mid-round standing.
+#' }
+#' @export
+
+ TF2T = function(i, coop, intent, coop_error, arb, arb_error, error_rate, arb_error_rate_type_1, arb_error_rate_type_2, standing, xi=0){
+  if (i < 3) {
+  # Coop without error on first move (could be moving 1st in round 1 or round 2)
+  result = c(1, 1, 0, 0, 0, standing, standing)
+  } 
+  if(i==3){
+  # Second move for focal; Coop, but with possible error 
+  do_coop = 1
+  er = ifelse(do_coop==0, 0, coin_V2(error_rate,i,coop_error))
+  result = c(ifelse(er==1, 0, do_coop), do_coop, er, 0, 0, standing, standing)
+  }
+  if(i>3){
+  # Use TF2T rule
+  do_coop = 1
+  if(coop[i-1]==0 && coop[i-3]==0) # Partner defected twice
+  do_coop = 0
+  do_coop = ifelse(do_coop==1, coin(1-xi), 0)
+  er = ifelse(do_coop==0, 0, coin_V2(error_rate,i,coop_error))
+  result = c(ifelse(er==1, 0, do_coop), do_coop, er, 0, 0, standing, standing)
+  }
+  return(result)
+  }
+
