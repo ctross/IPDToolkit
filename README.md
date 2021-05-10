@@ -25,9 +25,15 @@ integrate_new_functions(path)
 
 Simulating iterated prisoner's dilema game-play
 ------
-
+To visualize play between specific strategy types, use the sequence_plot function:
 ```{r}
-library(PrisonR)
-path = "C:\\Users\\Mind Is Moving\\Desktop"
-setup_folders(path,import_code=TRUE)
+ p1 = sequence_plot(Focal="ATFT", Partner="ATFT", seed=14534, n_rounds=10, error_rate=0.2, arb_error_rate_type_1=0.5, arb_error_rate_type_2=0.5)
+ p2 = sequence_plot(Focal="TFT", Partner="TFT",   seed=14534, n_rounds=10, error_rate=0.2, arb_error_rate_type_1=0.5, arb_error_rate_type_2=0.5)
+ p3 = sequence_plot(Focal="TFT", Partner="GTFT",  seed=3522143, n_rounds=10, error_rate=0.2, arb_error_rate_type_1=0.5, arb_error_rate_type_2=0.5)
+ p4 = sequence_plot(Focal="TFT", Partner="TFTA",  seed=145234, n_rounds=10, error_rate=0.2, arb_error_rate_type_1=0.5, arb_error_rate_type_2=0.5)
+
+ ggsave("ATFTvATFT.pdf", p1, width=8*0.9,height=8*0.9)
+ ggsave("TFTvTFT.pdf", p2, width=8*0.9,height=8*0.9)
+ ggsave("TFTvGTFT.pdf", p3, width=8*0.9,height=8*0.9)
+ ggsave("TFTvTFTA.pdf", p4, width=8*0.9,height=8*0.9)
 ```
