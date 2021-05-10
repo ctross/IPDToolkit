@@ -48,6 +48,13 @@ set.seed(1)
        arb_error_rate_type_2=0.2
        )
 ```
+Then, ensure that the latent mixture model allows us to recover strategies:
+```{r}
+create_stan_models(path)
+f2a = fit_IPD_optim(d,n_strategies=12)
+ex2a = visualize_IPD_results(f2a, d, color="darkred", smart_sort=TRUE)
+ggsave("Heat_optim.pdf", ex2a, width=8*0.9,height=8*0.9)
+```
 
 To run a bunch of random matchups, where strategy use and sneak rate vary as a function of an individual-level covariate, run:
 ```{r}
@@ -75,7 +82,6 @@ for(i in 1:N){
 table(strat,Z)
 plot(Xi~Z)
 
-
  d = simulate_round_robin(
  	   players=strat,
        n_rounds=30,
@@ -86,4 +92,19 @@ plot(Xi~Z)
        n_games = 160,
        xi=Xi
        )
-       ```
+ ```
+And again check performance of our models:
+```{r}
+create_stan_models(path)
+f3a = fit_IPD_optim(d,covariates=as.matrix(Z),n_strategies=12)
+
+babynames = c("Olivia","Gianna","Oliver","Elijah","William","Layla","Chloe","Aria","Mia","Alexander","Mason","Michael","Ethan","Daniel","Jacob","Logan","Jackson","Levi",
+"Sebastian","Mateo","Jack","Sophia","Camila","Aiden","Samuel","Penelope","John","David","Wyatt","Matthew","Luke","Asher","Carter","Julian","Scarlett","Leo",
+"Jayden","Mia","Isaac","Abigail","Ajira","Hudson","Luna","Ezra","Thomas","Charles","Christopher","Jaxon","Maverick","Josiah","Isaiah","Andrew","Elias",
+"Nora","Nathan","Caleb","Ryan","Adrian","Miles","Eli")
+
+d$players = paste0(babynames,"(",strat,")")
+
+ex3a = visualize_IPD_results(f3a, d, color="darkred", smart_sort=TRUE)
+ggsave("Heat_optim_covariates.pdf", ex3a, width=8*0.9,height=8*0.9)
+```
