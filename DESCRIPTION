@@ -1,5 +1,5 @@
 Package: PrisonR
-Title: A package for simulating and analysing iterated prisoners dilema games
+Title: A package for simulating and analyzing iterated prisoners dilema games
 Version: 0.0.0.9000
 Authors@R: person("Cody", "Ross", email = "ctross@ucdavis.edu", role = c("aut", "cre"))
 Description: Simulated game play and Bayesian analysis
