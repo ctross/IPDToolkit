@@ -9,7 +9,7 @@ for (i in 1:N_individuals){
  to_vector(chi[i]) ~ normal(0,50);
  }
 
- alpha ~ beta(1,1);
+ alpha ~ beta(10,1);
  pi ~ beta(1,1);
  psi ~ beta(1,1);
  xi ~ beta(1,10);
