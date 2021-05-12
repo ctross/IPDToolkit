@@ -1,7 +1,7 @@
-#' Fit a finite mixture model using optimization
+#' Fit a finite mixture model using MCMC.
 #'
 #' @param 
-#' d A data list of the format exported by simulate_round_robin()
+#' d A data list of the format exported by simulate_round_robin().
 #' @param 
 #' covariates A matrix of covariates. Row number should equal the number of players. 
 #' @param 
@@ -22,12 +22,14 @@
 #' adapt_delta A term that controls MCMC proposal acceptance rate.
 #' @param 
 #' max_treedepth A term that controls the MCMC treedepth.
-#' @return A Stan object
+#' @return A Stan object.
 #' @export
 
-fit_IPD_mcmc = function(d, covariates=NULL, n_strategies=12, eta_moves=4, eta_arb=4, n_chains=1, n_cores=1, iterations=1000, warmup=500, adapt_delta=0.95, max_treedepth=12 ){
+fit_IPD_mcmc = function(d, covariates=NULL, n_strategies=12, eta_moves=4, eta_arb=4, n_chains=1, n_cores=1, iterations=1000, warmup=500, adapt_delta=0.95, max_treedepth=12 )
+{
 	 
- for(i in 1:5) d$moves <- rbind(rep(0,6), d$moves)
+ for(i in 1:5) 
+ d$moves <- rbind(rep(0,6), d$moves)
  head(d$moves,10)
  dat_list <- as.list(d$moves)
 
@@ -48,12 +50,12 @@ fit_IPD_mcmc = function(d, covariates=NULL, n_strategies=12, eta_moves=4, eta_ar
 
 # Strategy by move
 if(!is.null(covariates)){
- m_all1 <- stan_model(file = paste0(path,"/StanCode/model_code_covariates.stan"))
+ m_all1 <- stan_model(file = paste0(path,"/PrisonersDilema/StanCode/model_code_covariates.stan"))
  
  fit_hmc <- sampling(m_all1, data = dat_list, chains=n_chains, cores=n_cores, iter=iterations, warmup=warmup, 
  	                    control=list(adapt_delta=adapt_delta, max_treedepth=max_treedepth), refresh=1)
  }else{
- m_all2 <- stan_model(file = paste0(path,"/StanCode/model_code.stan"))
+ m_all2 <- stan_model(file = paste0(path,"/PrisonersDilema/StanCode/model_code.stan"))
  
  fit_hmc <- sampling(m_all2, data = dat_list, chains=n_chains, cores=n_cores, iter=iterations, warmup=warmup, 
  	                    control=list(adapt_delta=adapt_delta, max_treedepth=max_treedepth), refresh=1)

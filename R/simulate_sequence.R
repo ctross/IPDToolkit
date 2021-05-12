@@ -1,9 +1,9 @@
-#' Simulate a gameplay sequence between 2 strategies
+#' Simulate a gameplay sequence between 2 strategies.
 #'
 #' @param 
-#' n_rounds The number of complete rounds to play
+#' n_rounds The number of complete rounds to play.
 #' @param 
-#' strategies A 2-vector of strategies to compete. Names must match legal function files: i.e., "ALLC", "TFT", "GTFT", "TFTA" etc.
+#' strategies A 2-vector of strategies to compete. Names must match legal function files: i.e., "ALLC", "TFT", "GTFT", "TFTA", etc.
 #' @param 
 #' error_rate The rate at which the computer introduces errors of the form C to D.
 #' @param 
@@ -12,8 +12,8 @@
 #' arb_error_rate_type_2 The arbitrators rate of claiming an error was a true defection.
 #' @return A list of information.
 #' \itemize{
-#'   \item g_round - The game round ID code
-#'   \item actor_id - Player ID codes
+#'   \item g_round - The game round ID code.
+#'   \item actor_id - Player ID codes.
 #'   \item arb - Was the arbitrator called to start the round?
 #'   \item arb_err - Did the arbitrator declare an error occured?
 #'   \item coop - Did an observed cooperation occur?
@@ -26,7 +26,8 @@
 #' }
 #' @export
 
-simulate_sequence = function(n_rounds=40, strategies=c("ATFT","ATFT"), error_rate=0.05, arb_error_rate_type_1=0.1, arb_error_rate_type_2=0.1, xi=c(0,0), pID=c(1,2)){
+simulate_sequence = function(n_rounds=40, strategies=c("ATFT","ATFT"), error_rate=0.05, arb_error_rate_type_1=0.1, arb_error_rate_type_2=0.1, xi=c(0,0), pID=c(1,2))
+{
      
 ############################################################################### 
 # Model game sequences
@@ -47,8 +48,8 @@ simulate_sequence = function(n_rounds=40, strategies=c("ATFT","ATFT"), error_rat
 
  player = 2
  standing_1 = matrix(1, nrow=2, ncol=2) # Both start in good standing from both perspectives
+ 
  for (i in 1:m){
-
  # Players take turns across rounds
  player = ifelse( player==1 , 2 , 1 )
  partner = 2 - player + 1
@@ -68,7 +69,7 @@ simulate_sequence = function(n_rounds=40, strategies=c("ATFT","ATFT"), error_rat
 
  stand_mr_Focal[i] = move[8]
  stand_mr_Alter[i] = move[9]  
-}
+ }
 
  result = list(
   g_round=1:m,
@@ -85,5 +86,5 @@ simulate_sequence = function(n_rounds=40, strategies=c("ATFT","ATFT"), error_rat
   )
 
  return(result)
- } 
+} 
  

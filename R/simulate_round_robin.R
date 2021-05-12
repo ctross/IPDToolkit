@@ -1,13 +1,13 @@
-#' Simulate a gameplay sequence between 2 strategies
+#' Simulate a gameplay sequence between 2 strategies.
 #'
 #' @param 
-#' players A vector of strategies to compete pairwise in a round-robin. Names must match legal function files: i.e., "ALLC", "TFT", "GTFT", "TFTA" etc.
+#' players A vector of strategies to compete pairwise in a round-robin. Names must match legal function files: i.e., "ALLC", "TFT", "GTFT", "TFTA", etc.
 #' @param 
-#' n_rounds The number of complete rounds to play
+#' n_rounds The number of complete rounds to play.
 #' @param 
-#' n_games The number of games constructed from random pairing of players when 'mode' is 'random'.
+#' n_games The number of games to be played. These games will be from random pairings of players. This option is active only when 'mode' is 'random'.
 #' @param 
-#' matchups A n_games by 2 matrix, used when 'mode' is 'specified', with numeric values indicating which players are paired in each game.
+#' matchups A n_games by 2 matrix, used when 'mode' is 'specified'. The matix must be numeric values indicating which players are paired in each game.
 #' @param 
 #' error_rate The rate at which the computer introduces errors of the form C to D.
 #' @param 
@@ -18,14 +18,15 @@
 #' mode 'mode' must be: 'pairwise', 'random', or 'specified'. 'pairwise' creates a true round robin, with each player playing each other player. 'random' creates n_games of random pairings. 'specified' lets the user pass in the exact pairings of players using the 'matchups' matrix.
 #' @return A list of information.
 #' \itemize{
-#'   \item moves - A move data table
-#'   \item games - A game data table
-#'   \item players - A players data table
+#'   \item moves - A move data table.
+#'   \item games - A game data table.
+#'   \item players - A players data table.
 #' }
 #' @export
 
  simulate_round_robin = function(players=c("ATFT", "TFT", "TFTA" ), n_rounds=40, n_games=NULL, matchups=NULL, xi=0,
-                                 error_rate=0.05, arb_error_rate_type_1=0.1, arb_error_rate_type_2=0.1, mode="pairwise" ){
+                                 error_rate=0.05, arb_error_rate_type_1=0.1, arb_error_rate_type_2=0.1, mode="pairwise")
+ {
 
   if(mode=="pairwise"){
   # Make pairs

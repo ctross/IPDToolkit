@@ -4,7 +4,8 @@
 #' p A ggplot object
 #' @export
 
-shift_legend <- function(p){
+shift_legend <- function(p)
+{
 
   # check if p is a valid object
   if(!"gtable" %in% class(p)){

@@ -1,14 +1,15 @@
-#' A helper function to flip a random coin after a few rounds of fixed results and preventing sequential computer introduced errors
+#' A helper function to flip a random coin after a few rounds of fixed results. This prevents sequential computer introduced errors.
 #'
 #' @param 
-#' p The probability of a head
+#' p The probability of a head.
 #' @param 
-#' i The round ID code
+#' i The round ID code.
 #' @param 
-#' laged A window of time to check if the computer has already introduced an error
+#' laged A window of time to check if the computer has already introduced an error.
 #' @export
 
- coin_V2 = function(p,i,laged){
+coin_V2 = function(p,i,laged)
+{
    if(i<5){
     x = 0
     }
@@ -20,4 +21,4 @@
      }
    }
    return(x) 
- }
+}

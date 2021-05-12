@@ -1,7 +1,7 @@
 #' Fit a finite mixture model using optimization
 #'
 #' @param 
-#' d A data list of the format exported by simulate_round_robin()
+#' d A data list of the format exported by simulate_round_robin().
 #' @param 
 #' covariates A matrix of covariates. Row number should equal the number of players. 
 #' @param 
@@ -10,12 +10,14 @@
 #' eta_moves A term that controls the plausibility of implementation errors.
 #' @param 
 #' eta_arb A term that controls the plausibility of implementation errors.
-#' @return A Stan object
+#' @return A Stan object.
 #' @export
 
-fit_IPD_optim = function(d, covariates=NULL, n_strategies=12, eta_moves=4, eta_arb=4){
+fit_IPD_optim = function(d, covariates=NULL, n_strategies=12, eta_moves=4, eta_arb=4)
+{
  
- for(i in 1:5) d$moves <- rbind(rep(0,6), d$moves)
+ for(i in 1:5) 
+ d$moves <- rbind(rep(0,6), d$moves)
  head(d$moves,10)
  dat_list <- as.list(d$moves)
 
@@ -36,10 +38,10 @@ fit_IPD_optim = function(d, covariates=NULL, n_strategies=12, eta_moves=4, eta_a
 
 # Strategy by move
 if(!is.null(covariates)){
- m_all1 <- stan_model(file = paste0(path,"/StanCode/model_code_covariates.stan"))
+ m_all1 <- stan_model(file = paste0(path,"/PrisonersDilema/StanCode/model_code_covariates.stan"))
  fit_optim <- optimizing(m_all1, data = dat_list, as_vector=FALSE, refresh=1)
  } else{
- m_all2 <- stan_model(file = paste0(path,"/StanCode/model_code.stan"))
+ m_all2 <- stan_model(file = paste0(path,"/PrisonersDilema/StanCode/model_code.stan"))
  fit_optim <- optimizing(m_all2, data = dat_list, as_vector=FALSE, refresh=1)	
  }
 
