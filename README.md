@@ -17,6 +17,7 @@ library(PrisonR)
 path = "C:\\Users\\Mind Is Moving\\Desktop"
 setup_folders(path,import_code=TRUE)
 ```
+
 Once this directory is created, the user can add any new strategy files into the folder "PrisonersDilema/StrategiesR". These new files can then be added to the namespace by running:
 ```{r}
 integrate_new_functions(path)
