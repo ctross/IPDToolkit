@@ -2,7 +2,7 @@
 % Please edit documentation in R/simulate_sequence.R
 \name{simulate_sequence}
 \alias{simulate_sequence}
-\title{Simulate a gameplay sequence between 2 strategies}
+\title{Simulate a gameplay sequence between 2 strategies.}
 \usage{
 simulate_sequence(
   n_rounds = 40,
@@ -15,9 +15,9 @@ simulate_sequence(
 )
 }
 \arguments{
-\item{n_rounds}{The number of complete rounds to play}
+\item{n_rounds}{The number of complete rounds to play.}
 
-\item{strategies}{A 2-vector of strategies to compete. Names must match legal function files: i.e., "ALLC", "TFT", "GTFT", "TFTA" etc.}
+\item{strategies}{A 2-vector of strategies to compete. Names must match legal function files: i.e., "ALLC", "TFT", "GTFT", "TFTA", etc.}
 
 \item{error_rate}{The rate at which the computer introduces errors of the form C to D.}
 
@@ -28,8 +28,8 @@ simulate_sequence(
 \value{
 A list of information.
 \itemize{
-  \item g_round - The game round ID code
-  \item actor_id - Player ID codes
+  \item g_round - The game round ID code.
+  \item actor_id - Player ID codes.
   \item arb - Was the arbitrator called to start the round?
   \item arb_err - Did the arbitrator declare an error occured?
   \item coop - Did an observed cooperation occur?
@@ -42,5 +42,5 @@ A list of information.
 }
 }
 \description{
-Simulate a gameplay sequence between 2 strategies
+Simulate a gameplay sequence between 2 strategies.
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/visualize_IPD_results.R
 \name{visualize_IPD_results}
 \alias{visualize_IPD_results}
-\title{Plot a heatmap that shows the distribution of posterior probability over strategies for each player}
+\title{Plot a heatmap that shows the distribution of posterior probability over strategies for each player.}
 \usage{
 visualize_IPD_results(
   fit,
@@ -11,7 +11,8 @@ visualize_IPD_results(
   smart_sort = FALSE,
   color = "#440154FF",
   strategy_set = c("ALLD", "ALLC", "RANDY", "TFT", "TF2T", "GTFT", "WSLS", "TFTA",
-    "TF2TA", "GTFTA", "WSLSA", "ATFT")
+    "TF2TA", "GTFTA", "WSLSA", "ATFT"),
+  dashes_at = c(0)
 )
 }
 \arguments{
@@ -21,15 +22,17 @@ visualize_IPD_results(
 
 \item{mode}{Either 'optim' or 'mcmc'.}
 
-\item{smart_sort}{Sort to clust by strategy?}
+\item{smart_sort}{Sort to cluster by strategy?}
 
 \item{color}{The color of the 'hot' end of the heatmap.}
 
 \item{strategy_set}{The list of strategies in the Stan model. The order here must match the order of strategies in the Stan file.}
+
+\item{dashes_at}{A list of locations to plot dashed lines.}
 }
 \value{
-A heatmap.
+A ggplot object. Heatmap.
 }
 \description{
-Plot a heatmap that shows the distribution of posterior probability over strategies for each player
+Plot a heatmap that shows the distribution of posterior probability over strategies for each player.
 }

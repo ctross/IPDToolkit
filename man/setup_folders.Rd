@@ -2,13 +2,17 @@
 % Please edit documentation in R/setup_folders.R
 \name{setup_folders}
 \alias{setup_folders}
-\title{A function to create the main directory used in the workflow}
+\title{A function to create the main directory used in the workflow.}
 \usage{
-setup_folders(path = path, import_code = TRUE)
+setup_folders(path = path, import_code = TRUE, overwrite = FALSE)
 }
 \arguments{
-\item{path}{Full path to where folder will be stored. This folder will be called "PrisonersDilema"}
+\item{path}{Full path to where folder will be stored. This folder will be called "PrisonersDilema".}
+
+\item{import_code}{If TRUE, this will import R and Stan template code from the PrisonR R package, and save it in the new directory.}
+
+\item{overwrite}{Setting this to TRUE will OVERWRITE existing files!}
 }
 \description{
-This function allows you to build the directories for the data, and to customize which folders appear
+This function allows you to build the directories for editing R and Stan code.
 }

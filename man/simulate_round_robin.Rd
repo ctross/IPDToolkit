@@ -2,7 +2,7 @@
 % Please edit documentation in R/simulate_round_robin.R
 \name{simulate_round_robin}
 \alias{simulate_round_robin}
-\title{Simulate a gameplay sequence between 2 strategies}
+\title{Simulate a gameplay sequence between 2 strategies.}
 \usage{
 simulate_round_robin(
   players = c("ATFT", "TFT", "TFTA"),
@@ -17,13 +17,13 @@ simulate_round_robin(
 )
 }
 \arguments{
-\item{players}{A vector of strategies to compete pairwise in a round-robin. Names must match legal function files: i.e., "ALLC", "TFT", "GTFT", "TFTA" etc.}
+\item{players}{A vector of strategies to compete pairwise in a round-robin. Names must match legal function files: i.e., "ALLC", "TFT", "GTFT", "TFTA", etc.}
 
-\item{n_rounds}{The number of complete rounds to play}
+\item{n_rounds}{The number of complete rounds to play.}
 
-\item{n_games}{The number of games constructed from random pairing of players when 'mode' is 'random'.}
+\item{n_games}{The number of games to be played. These games will be from random pairings of players. This option is active only when 'mode' is 'random'.}
 
-\item{matchups}{A n_games by 2 matrix, used when 'mode' is 'specified', with numeric values indicating which players are paired in each game.}
+\item{matchups}{A n_games by 2 matrix, used when 'mode' is 'specified'. The matix must be numeric values indicating which players are paired in each game.}
 
 \item{error_rate}{The rate at which the computer introduces errors of the form C to D.}
 
@@ -36,11 +36,11 @@ simulate_round_robin(
 \value{
 A list of information.
 \itemize{
-  \item moves - A move data table
-  \item games - A game data table
-  \item players - A players data table
+  \item moves - A move data table.
+  \item games - A game data table.
+  \item players - A players data table.
 }
 }
 \description{
-Simulate a gameplay sequence between 2 strategies
+Simulate a gameplay sequence between 2 strategies.
 }

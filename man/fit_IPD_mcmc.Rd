@@ -2,7 +2,7 @@
 % Please edit documentation in R/fit_IPD_hmc.R
 \name{fit_IPD_mcmc}
 \alias{fit_IPD_mcmc}
-\title{Fit a finite mixture model using optimization}
+\title{Fit a finite mixture model using MCMC.}
 \usage{
 fit_IPD_mcmc(
   d,
@@ -19,7 +19,7 @@ fit_IPD_mcmc(
 )
 }
 \arguments{
-\item{d}{A data list of the format exported by simulate_round_robin()}
+\item{d}{A data list of the format exported by simulate_round_robin().}
 
 \item{covariates}{A matrix of covariates. Row number should equal the number of players.}
 
@@ -42,8 +42,8 @@ fit_IPD_mcmc(
 \item{max_treedepth}{A term that controls the MCMC treedepth.}
 }
 \value{
-A Stan object
+A Stan object.
 }
 \description{
-Fit a finite mixture model using optimization
+Fit a finite mixture model using MCMC.
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/sequence_plot.R
 \name{sequence_plot}
 \alias{sequence_plot}
-\title{Plot a gameplay sequence between 2 strategies}
+\title{Plot a gameplay sequence between 2 strategies.}
 \usage{
 sequence_plot(
   Focal = "ATFT",
@@ -11,27 +11,31 @@ sequence_plot(
   n_rounds = 20,
   error_rate = 0.1,
   arb_error_rate_type_1 = 0.5,
-  arb_error_rate_type_2 = 0.5
+  arb_error_rate_type_2 = 0.5,
+  colors = c(No = "#ffeda0", Defect = "#440154FF", `Good Standing` = "#7fcdbb", `Bad
+    Standing` = "black", Cooperate = "white", Yes = "#0c2c84")
 )
 }
 \arguments{
-\item{Focal}{A strategy file to be used by the focal player. Name must match legal function files: i.e., "ALLC", "TFT", "GTFT", "TFTA" etc.}
+\item{Focal}{A strategy file to be used by the focal player. Name must match a legal function file: i.e., "ALLC", "TFT", "GTFT", "TFTA", etc.}
 
-\item{Partner}{A strategy file to be used by the partner player. Name must match legal function files: i.e., "ALLC", "TFT", "GTFT", "TFTA" etc.}
+\item{Partner}{A strategy file to be used by the partner player. Name must match a legal function file: i.e., "ALLC", "TFT", "GTFT", "TFTA", etc.}
 
-\item{seed}{A seed for the random number generator for reproducible plots}
+\item{seed}{A seed for the random number generator for reproducible plots.}
 
 \item{n_rounds}{Number of rounds to plot.}
 
-\item{error_rate}{The rate at which the computer introduces errors of the form C to D}
+\item{error_rate}{The rate at which the computer introduces errors of the form C to D.}
 
-\item{arb_error_rate_type_1}{The arbitrators rate of failing to detect a real error}
+\item{arb_error_rate_type_1}{The arbitrators rate of failing to detect a real error.}
 
-\item{arb_error_rate_type_2}{The arbitrators rate of claiming an error was a true defection}
+\item{arb_error_rate_type_2}{The arbitrators rate of claiming an error was a true defection.}
+
+\item{colors}{Colors for the palette.}
 }
 \value{
-A plot showing two strategies playing
+A ggplot object showing two strategies playing.
 }
 \description{
-Plot a gameplay sequence between 2 strategies
+Plot a gameplay sequence between 2 strategies.
 }

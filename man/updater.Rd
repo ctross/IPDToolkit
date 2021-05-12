@@ -2,14 +2,14 @@
 % Please edit documentation in R/updater.R
 \name{updater}
 \alias{updater}
-\title{A helper function for ATFT}
+\title{A helper function for ATFT.}
 \usage{
 updater(tt, standing, f_is_g, coop, callArb, arbEr)
 }
 \arguments{
-\item{tt}{The truth table for ATFT}
+\item{tt}{The truth table for ATFT.}
 
-\item{standing}{The standing vector of focal and alter}
+\item{standing}{The standing vector of focal and alter.}
 
 \item{f_is_g}{Is focal giver in this half round?}
 
@@ -20,5 +20,5 @@ updater(tt, standing, f_is_g, coop, callArb, arbEr)
 \item{arbEr}{Did arbitrator declare that an error occured?}
 }
 \description{
-A helper function for ATFT
+A helper function for ATFT.
 }

@@ -2,17 +2,17 @@
 % Please edit documentation in R/coin_V2.R
 \name{coin_V2}
 \alias{coin_V2}
-\title{A helper function to flip a random coin after a few rounds of fixed results and preventing sequential computer introduced errors}
+\title{A helper function to flip a random coin after a few rounds of fixed results. This prevents sequential computer introduced errors.}
 \usage{
 coin_V2(p, i, laged)
 }
 \arguments{
-\item{p}{The probability of a head}
+\item{p}{The probability of a head.}
 
-\item{i}{The round ID code}
+\item{i}{The round ID code.}
 
-\item{laged}{A window of time to check if the computer has already introduced an error}
+\item{laged}{A window of time to check if the computer has already introduced an error.}
 }
 \description{
-A helper function to flip a random coin after a few rounds of fixed results and preventing sequential computer introduced errors
+A helper function to flip a random coin after a few rounds of fixed results. This prevents sequential computer introduced errors.
 }

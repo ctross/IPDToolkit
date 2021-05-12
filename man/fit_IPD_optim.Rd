@@ -13,7 +13,7 @@ fit_IPD_optim(
 )
 }
 \arguments{
-\item{d}{A data list of the format exported by simulate_round_robin()}
+\item{d}{A data list of the format exported by simulate_round_robin().}
 
 \item{covariates}{A matrix of covariates. Row number should equal the number of players.}
 
@@ -24,7 +24,7 @@ fit_IPD_optim(
 \item{eta_arb}{A term that controls the plausibility of implementation errors.}
 }
 \value{
-A Stan object
+A Stan object.
 }
 \description{
 Fit a finite mixture model using optimization

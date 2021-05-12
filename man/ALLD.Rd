@@ -2,7 +2,7 @@
 % Please edit documentation in R/ALLD.R
 \name{ALLD}
 \alias{ALLD}
-\title{ALLD function file}
+\title{ALLD function file.}
 \usage{
 ALLD(
   i,
@@ -19,15 +19,33 @@ ALLD(
 )
 }
 \arguments{
-\item{i}{The round ID code}
+\item{i}{The round ID code.}
+
+\item{coop}{Was cooperation observed?}
+
+\item{intent}{The the player intend to cooperate?}
+
+\item{coop_error}{Was an error introduced by the computer?}
+
+\item{arb}{Was the arbitrator called?}
+
+\item{arb_error}{Did the arbitrator declare an error?}
+
+\item{error_rate}{The rate at which the computer introduces errors of the form C to D.}
+
+\item{arb_error_rate_type_1}{The arbitrators rate of failing to detect a real error.}
+
+\item{arb_error_rate_type_2}{The arbitrators rate of claiming an error was a true defection.}
 
 \item{standing}{A vector of standing.}
+
+\item{xi}{The sneaky rate of the strategy.}
 }
 \value{
 A vector of information.
 \itemize{
-  \item Cell 1 - Did the player cooperate
-  \item Cell 2 - Did the player intend tocooperate
+  \item Cell 1 - Did the player cooperate.
+  \item Cell 2 - Did the player intend tocooperate.
   \item Cell 3 - Did the computer introduce an error?
   \item Cell 4 - Did the player call the arbitrator?
   \item Cell 5 - Did the arbitrator declare an error occured?
@@ -36,5 +54,5 @@ A vector of information.
 }
 }
 \description{
-ALLD function file
+ALLD function file.
 }

@@ -2,13 +2,13 @@
 % Please edit documentation in R/coin.R
 \name{coin}
 \alias{coin}
-\title{A helper function to flip a random coin}
+\title{A helper function to flip a random coin.}
 \usage{
 coin(p)
 }
 \arguments{
-\item{p}{The probability of a head}
+\item{p}{The probability of a head.}
 }
 \description{
-A helper function to flip a random coin
+A helper function to flip a random coin.
 }

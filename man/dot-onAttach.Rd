@@ -2,13 +2,10 @@
 % Please edit documentation in R/load.R
 \name{.onAttach}
 \alias{.onAttach}
-\title{A function to load some data when the package opens}
+\title{A function to load some data when the package opens.}
 \usage{
 .onAttach(libname = NULL, pkgname = "PrisonR")
 }
-\arguments{
-\item{path}{Full path to where files will be stored.}
-}
 \description{
-A function to load some data when the package opens
+A function to load some data when the package opens.
 }

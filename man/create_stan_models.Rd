@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_stan_models.R
 \name{create_stan_models}
 \alias{create_stan_models}
-\title{A function to create the main directory used in the workflow}
+\title{A function to create the main models used in the workflow.}
 \usage{
 create_stan_models(path = path)
 }
@@ -10,5 +10,5 @@ create_stan_models(path = path)
 \item{path}{Full path to where files will be stored.}
 }
 \description{
-This function allows you to build the directories for the data, and to customize which folders appear
+This function allows you to build Stan models with minimum user input.
 }
