@@ -5,14 +5,14 @@ model{
 // G ~ normal(10,1);
 // H ~ normal(10,1);
 
-for ( i in 1:N_individuals ) 
- to_vector(chi[i]) ~ normal(0,5);
+for (i in 1:N_individuals){
+ to_vector(chi[i]) ~ normal(0,50);
+ }
 
  alpha ~ beta(1,1);
- 
  pi ~ beta(1,1);
  psi ~ beta(1,1);
- xi ~ beta(1,15);
+ xi ~ beta(1,10);
 
 //# Done accumulating terms, now add to target with proper mixture probabilities
   {

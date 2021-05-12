@@ -1,15 +1,26 @@
 //###################################################### Parameters to Estimate
 parameters{
- vector<lower=0,upper=1>[N_individuals] alpha;               //# Prob of calling arb after a defection
- vector<lower=0,upper=1>[N_individuals] pi;                  //# RANDY cooperation rate
- vector<lower=0,upper=1>[N_individuals] psi;                 //# Generosity rate
- vector<lower=0,upper=1>[N_individuals] xi;                  //# Sneaky rate
- vector[N_strategies-1] chi [N_individuals];                 //# Baseline rates of each strategy
- matrix[N_covariates, N_strategies-1] beta;                  //# Coefs on predictors of each strategy relative to control case
+ vector[N_individuals] alpha_hat;                                
+ vector[N_individuals] pi_hat;                  
+ vector[N_individuals] psi_hat;                 
+ vector[N_individuals] xi_hat;               
+
+ vector[N_covariates+1] nu_alpha;                          
+ vector[N_covariates+1] nu_pi;                           
+ vector[N_covariates+1] nu_psi;                             
+ vector[N_covariates+1] nu_xi;                                                            
+
+ vector[N_strategies-1] chi [N_individuals];                
+ matrix[N_covariates, N_strategies-1] beta;                 
 }
 
 //########################################### Transformed Parameters to Estimate
 transformed parameters{
+ vector<lower=0,upper=1>[N_individuals] alpha;               //# Prob of calling arb after a defection
+ vector<lower=0,upper=1>[N_individuals] pi;                  //# RANDY cooperation rate
+ vector<lower=0,upper=1>[N_individuals] psi;                 //# Generosity rate
+ vector<lower=0,upper=1>[N_individuals] xi;                  //# Sneaky rate
+
  vector[N_strategies] Theta [N_individuals]; // #Individual mixture rates
  vector[N_strategies] Upsilon [N_individuals]; //# One log prob term for each candidate strategy
 {
@@ -17,6 +28,11 @@ transformed parameters{
 
     for(j in 1:N_individuals){
       Theta[j]=log_softmax(append_row(0, chi[j] + to_vector(x_beta[j]))); 
+
+      alpha[j] = inv_logit(alpha_hat[j] + append_col(1,Covariates[j])*nu_alpha);
+      pi[j] = inv_logit(pi_hat[j] + append_col(1,Covariates[j])*nu_pi);
+      psi[j] = inv_logit(psi_hat[j] + append_col(1,Covariates[j])*nu_psi);
+      xi[j] = inv_logit(xi_hat[j] + append_col(1,Covariates[j])*nu_xi);
       }
 }
 
