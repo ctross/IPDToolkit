@@ -42,7 +42,7 @@ transformed parameters{
 //# ALLC
  p = Pred_ALLC(g_round[i], arb[(i-1):i], arb_err[(i-1):i], coop[(i-1):i], coop_intent[(i-1):i], coop_err[(i-1):i]);
  p = P(p,arb[i], coop_intent[i], G[actor_id[i]], H[actor_id[i]], alpha[actor_id[i]]);
- Upsilon[actor_id[i],2] += + sum( p );
+ Upsilon[actor_id[i],2] += sum( p );
  
 //# RANDY
  p = Pred_RANDY(g_round[i], arb[(i-1):i], arb_err[(i-1):i], coop[(i-1):i], coop_intent[(i-1):i], coop_err[(i-1):i],  pi[actor_id[i]]);
