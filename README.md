@@ -1,6 +1,6 @@
 PrisonR
 ========
-<img align="right" src="https://github.com/ctross/PrisonR/blob/main/prisonR.png" alt="logo" width="140"> 
+<img align="right" src="https://github.com/ctross/PrisonR/blob/main/prisonR.png" alt="logo" width="170"> 
 
 **PrisonR** is an R package designed to facilitate the simulation and analysis of iterated prisoner's dilema games using Bayesian discrete mixture models.
 
