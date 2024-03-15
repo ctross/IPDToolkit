@@ -1,4 +1,4 @@
-#' WACKO function file.
+#' GLUM function file.
 #'
 #' @param 
 #' i The round ID code.
@@ -34,7 +34,7 @@
 #' }
 #' @export
 
-WACKO = function(i, coop, intent, coop_error, arb, arb_error, error_rate, 
+GLUM = function(i, coop, intent, coop_error, arb, arb_error, error_rate, 
                    arb_error_rate_type_1, arb_error_rate_type_2, standing, xi=0)
 {
   if(i==1){# Cooperate without error on first move.
