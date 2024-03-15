@@ -16,7 +16,7 @@ Install by running on R:
 
 Next, load the package and set a path to where a directory can be created. The setup_folders function will create a directory where some user-editable R and Stan code will be stored.
 ```{r}
-library(PrisonR)
+library(IPDToolkit)
 path = "C:\\Users\\Mind Is Moving\\Desktop"
 setup_folders(path,import_code=TRUE)
 ```
