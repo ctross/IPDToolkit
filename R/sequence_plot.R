@@ -19,9 +19,9 @@
 #' @return A ggplot object showing two strategies playing.
 #' @export
 
- sequence_plot = function(Focal="ATFT", Partner="ATFT", seed=1234, n_rounds=20, error_rate=0.1, arb_error_rate_type_1=0.5, arb_error_rate_type_2=0.5, 
-                         colors=c("No" = "#ffeda0", "Defect" = "#440154FF", "Good Standing" = "#7fcdbb", "Bad Standing" = "black", "Cooperate" = "white", "Yes" = "#0c2c84"))
-{
+
+sequence_plot = function(Focal="ATFT", Partner="ATFT", seed=1234, n_rounds=20, error_rate=0.1, arb_error_rate_type_1=0.5, arb_error_rate_type_2=0.5, 
+                         colors=c("No" = "#ffeda0", "Defect" = "#440154FF", "Good Standing" = "#7fcdbb", "Bad Standing" = "black", "Cooperate" = "white", "Yes" = "#0c2c84")){
 set.seed(seed)
  n_rounds = n_rounds + 1
  d = simulate_round_robin(players=rep(c(Focal,Partner,Partner) , 1), 
@@ -69,7 +69,7 @@ set.seed(seed)
  d3$var <- factor( d3$var) # TGF added 6/14/2020
  levels(d3$var) <- c(levels(d3$var),"No", "Defect", "Good Standing", "Bad Standing", "Cooperate", "Yes") # CTR added 5/7/2021
  
- d3$var <- factor( d3$var, levels( d3$var)[c(4,1,2,3,5,6)])
+ d3$var <- factor( d3$var, c("Good Standing","Bad Standing","Cooperate","Defect","Yes","No"))
 
  # Plotting it
  p1=ggplot(d3, aes(x = factor(round2), stratum = var, alluvium = actor_id2, fill = var, label = var, color = factor(actor_id2))) +
