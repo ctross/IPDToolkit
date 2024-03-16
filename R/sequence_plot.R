@@ -23,6 +23,7 @@ sequence_plot = function(Focal="ATFT", Partner="ATFT", seed=1234, n_rounds=20, e
                          colors=c("No" = "#ffeda0", "Defect" = "#440154FF", "Good Standing" = "#7fcdbb", "Bad Standing" = "black", "Cooperate" = "white", "Yes" = "#0c2c84"))
 {
 set.seed(seed)
+ n_rounds = n_rounds + 1
  d = simulate_round_robin(players=rep(c(Focal,Partner,Partner) , 1), 
                           n_rounds=n_rounds,
                           error_rate=error_rate, 
@@ -47,8 +48,8 @@ set.seed(seed)
  d2$s1f2 <- ifelse(d2$stand_1_Focal==0,"Bad Standing","Good Standing")
  d2$s1a2 <- ifelse(d2$stand_1_Alter==0,"Bad Standing","Good Standing")
 
- d2$s2f2 <- c(ifelse(d2$stand_mr_Focal==0,"Bad Standing","Good Standing")[3:n_rounds_full],NA,NA)
- d2$s2a2 <- c(ifelse(d2$stand_mr_Alter==0,"Bad Standing","Good Standing")[3:n_rounds_full],NA,NA)
+ d2$s2f2 <- c(ifelse(d2$stand_mr_Focal==0,"Bad Standing","Good Standing")[3:n_rounds_full],"Bad Standing","Bad Standing")
+ d2$s2a2 <- c(ifelse(d2$stand_mr_Alter==0,"Bad Standing","Good Standing")[3:n_rounds_full],"Bad Standing","Bad Standing") # Last 2 cells are just scrap to make legend work
 
  d3 <- data.frame(round2=c( d2$round2, d2$round2, d2$round2, d2$round2, d2$round2, d2$round2, d2$round2, d2$round2, d2$round2),
                 actor_id2= c(d2$actor_id2,d2$actor_id2,d2$actor_id2,d2$actor_id2,d2$actor_id2,d2$actor_id2,d2$actor_id2,d2$actor_id2,d2$actor_id2),
@@ -63,7 +64,6 @@ set.seed(seed)
       )
  d3$var <- factor( d3$var) # TGF added 6/14/2020
  levels(d3$var) <- c(levels(d3$var),"No", "Defect", "Good Standing", "Bad Standing", "Cooperate", "Yes") # CTR added 5/7/2021
- d3$var <- factor( d3$var, sort(levels( d3$var)))
  d3$var <- factor( d3$var, levels( d3$var)[c(4,1,2,3,5,6)])
 
  # Plotting it
@@ -76,7 +76,7 @@ set.seed(seed)
         strip.text = element_text(colour = "white")) + theme(panel.background = element_blank()) +  
   theme(legend.position = "bottom") +  scale_colour_manual(values = c("grey70", "black"),labels=c(Focal, Partner), name = "Players: ") +
   ggtitle("") + facet_wrap(key ~ . , scales = "fixed",ncol=1) +
-  xlab("Round") + 
+  xlab("Round") + coord_cartesian(x=c(0,n_rounds_full-2.35)) +
   theme(axis.title.y=element_blank(),
         axis.text.y=element_blank(),
         axis.ticks.y=element_blank()) + 
