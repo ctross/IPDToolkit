@@ -21,7 +21,7 @@
 
 
 sequence_plot = function(Focal="ATFT", Partner="ATFT", seed=1234, n_rounds=20, error_rate=0.1, arb_error_rate_type_1=0.5, arb_error_rate_type_2=0.5, 
-                         colors=c("No" = "#ffeda0", "Defect" = "#440154FF", "Good Standing" = "#7fcdbb", "Bad Standing" = "black", "Cooperate" = "white", "Yes" = "#0c2c84")){
+                         colors=c("No" = "#ffeda0", "Defect" = "darkred", "Good Standing" = "#7fcdbb", "Bad Standing" = "grey13", "Cooperate" = "white", "Yes" = "#0c2c84")){
 set.seed(seed)
  n_rounds = n_rounds + 1
  d = simulate_round_robin(players=rep(c(Focal,Partner,Partner) , 1), 
@@ -77,7 +77,7 @@ set.seed(seed)
     name = "", drop = FALSE, na.translate=FALSE) + 
   #geom_flow(stat = "alluvium", lode.guidance = "rightleft", color = "darkgray") +
   geom_stratum(size=1.1) +  theme(panel.grid.minor = element_blank()) + theme(panel.grid.major = element_blank()) + 
-  theme(strip.background = element_rect(fill = "grey35", color = "white", size = 1),
+  theme(strip.background = element_rect(fill = "grey35", color = "white"),
         strip.text = element_text(colour = "white")) + theme(panel.background = element_blank()) +  
   theme(legend.position = "bottom") +  scale_colour_manual(values = c("grey70", "black"),labels=c(Focal, Partner), name = "Players: ") +
   ggtitle("") + facet_wrap(key ~ . , scales = "fixed",ncol=1) +
