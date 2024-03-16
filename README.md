@@ -3,7 +3,7 @@ IPDToolkit
 <img align="right" src="https://github.com/ctross/IPDToolkit/blob/main/logo.png" alt="logo" width="170"> 
 
 **IPDToolkit** is an R package designed to facilitate the simulation and analysis of iterated prisoner's dilema games using Bayesian discrete mixture models.
-
+To address theoretical questions, IPDToolkit provides a Monte Carlo simulation engine that can be used to generate play between arbitrary strategies in the IPD with arbitration and assess expected pay-offs.  To address empirical questions, IPDToolkit provides customizable, Bayesian finite-mixture models that can be used to identify the strategies responsible for generating empirical game-play data. We present a complete workflow using IPDToolkit to teach end-users its functionality.
 Setup
 ------
 Install by running on R:
