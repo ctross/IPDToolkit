@@ -19,7 +19,7 @@
 #' @return A ggplot object showing two strategies playing.
 #' @export
 
-sequence_plot = function(Focal="ATFT", Partner="ATFT", seed=1234, n_rounds=20, error_rate=0.1, arb_error_rate_type_1=0.5, arb_error_rate_type_2=0.5, 
+ sequence_plot = function(Focal="ATFT", Partner="ATFT", seed=1234, n_rounds=20, error_rate=0.1, arb_error_rate_type_1=0.5, arb_error_rate_type_2=0.5, 
                          colors=c("No" = "#ffeda0", "Defect" = "#440154FF", "Good Standing" = "#7fcdbb", "Bad Standing" = "black", "Cooperate" = "white", "Yes" = "#0c2c84"))
 {
 set.seed(seed)
@@ -48,22 +48,27 @@ set.seed(seed)
  d2$s1f2 <- ifelse(d2$stand_1_Focal==0,"Bad Standing","Good Standing")
  d2$s1a2 <- ifelse(d2$stand_1_Alter==0,"Bad Standing","Good Standing")
 
- d2$s2f2 <- c(ifelse(d2$stand_mr_Focal==0,"Bad Standing","Good Standing")[3:n_rounds_full],"Bad Standing","Bad Standing")
- d2$s2a2 <- c(ifelse(d2$stand_mr_Alter==0,"Bad Standing","Good Standing")[3:n_rounds_full],"Bad Standing","Bad Standing") # Last 2 cells are just scrap to make legend work
+ d2$s2f2 <- c(ifelse(d2$stand_mr_Focal==0,"Bad Standing","Good Standing"))
+ d2$s2a2 <- c(ifelse(d2$stand_mr_Alter==0,"Bad Standing","Good Standing")) 
 
- d3 <- data.frame(round2=c( d2$round2, d2$round2, d2$round2, d2$round2, d2$round2, d2$round2, d2$round2, d2$round2, d2$round2),
-                actor_id2= c(d2$actor_id2,d2$actor_id2,d2$actor_id2,d2$actor_id2,d2$actor_id2,d2$actor_id2,d2$actor_id2,d2$actor_id2,d2$actor_id2),
-                var= c(d2$arb2, d2$arb_err2, d2$s1f2,d2$s1a2, d2$coop_intent2, d2$coop_err2, d2$coop2,d2$s2f2,d2$s2a2),
-                key = c(rep("1. Calls Arbitrator",n_rounds_full), rep("2. Arbitrator Declares Error",n_rounds_full), 
-                        rep("3a. Focal Standing Evaluation at Time of Intent (from focal perspective)",n_rounds_full),
-                        rep("3b. Alter Standing Evaluation at Time of Intent (from focal perspective)",n_rounds_full), 
-                        rep("4. Cooperative Intent",n_rounds_full),  rep("5. System Introduces Error",n_rounds_full), 
-                        rep("6. Observable Cooperation",n_rounds_full),
-                        rep("7a. Focal Standing Evaluation at Time of Observable Move (from focal perspective)",n_rounds_full),
-                        rep("7b. Alter Standing Evaluation at Time of Observable Move (from focal perspective)",n_rounds_full))
+ d3 <- data.frame(round2 = c(d2$round2, d2$round2, d2$round2, d2$round2, d2$round2, d2$round2, d2$round2, d2$round2, d2$round2),
+                  actor_id2 = c(d2$actor_id2,d2$actor_id2,d2$actor_id2,d2$actor_id2,d2$actor_id2,d2$actor_id2,d2$actor_id2,d2$actor_id2,d2$actor_id2),
+                var= c(d2$s2f2, d2$s2a2, d2$arb2, d2$arb_err2, d2$s1f2,d2$s1a2,  d2$coop_intent2, d2$coop_err2, d2$coop2),
+                key = c(
+                        rep("1a. Focal Standing Evaluation Pre-Arbitration  (from focal perspective)",n_rounds_full),
+                        rep("1b. Alter Standing Evaluation Pre-Arbitration  (from focal perspective)",n_rounds_full), 
+                        rep("2. Calls Arbitrator",n_rounds_full), 
+                        rep("3. Arbitrator Declares Error",n_rounds_full), 
+                        rep("4a. Focal Standing Evaluation Post-Arbitration (from focal perspective)",n_rounds_full),
+                        rep("4b. Alter Standing Evaluation Post-Arbitration (from focal perspective)",n_rounds_full),
+                        rep("5. Cooperative Intent",n_rounds_full),  
+                        rep("6. System Introduces Error",n_rounds_full), 
+                        rep("7. Observable Cooperation",n_rounds_full)
+                        )
       )
  d3$var <- factor( d3$var) # TGF added 6/14/2020
  levels(d3$var) <- c(levels(d3$var),"No", "Defect", "Good Standing", "Bad Standing", "Cooperate", "Yes") # CTR added 5/7/2021
+ 
  d3$var <- factor( d3$var, levels( d3$var)[c(4,1,2,3,5,6)])
 
  # Plotting it
@@ -76,7 +81,7 @@ set.seed(seed)
         strip.text = element_text(colour = "white")) + theme(panel.background = element_blank()) +  
   theme(legend.position = "bottom") +  scale_colour_manual(values = c("grey70", "black"),labels=c(Focal, Partner), name = "Players: ") +
   ggtitle("") + facet_wrap(key ~ . , scales = "fixed",ncol=1) +
-  xlab("Round") + coord_cartesian(x=c(0,n_rounds_full-2.35)) +
+  xlab("Round") + 
   theme(axis.title.y=element_blank(),
         axis.text.y=element_blank(),
         axis.ticks.y=element_blank()) + 
