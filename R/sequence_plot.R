@@ -79,7 +79,7 @@ set.seed(seed)
   geom_stratum(size=1.1) +  theme(panel.grid.minor = element_blank()) + theme(panel.grid.major = element_blank()) + 
   theme(strip.background = element_rect(fill = "grey35", color = "white"),
         strip.text = element_text(colour = "white")) + theme(panel.background = element_blank()) +  
-  theme(legend.position = "bottom") +  scale_colour_manual(values = c("grey70", "black"),labels=c(Focal, Partner), name = "Players: ") +
+  theme(legend.position = "bottom") +  scale_colour_manual(values = c("grey70", "black"),labels=c(focal, partner), name = "Players: ") +
   ggtitle("") + facet_wrap(key ~ . , scales = "fixed",ncol=1) +
   xlab("Round") + 
   theme(axis.title.y=element_blank(),
