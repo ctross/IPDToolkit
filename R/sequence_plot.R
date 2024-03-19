@@ -1,9 +1,9 @@
 #' Plot a gameplay sequence between 2 strategies.
 #'
 #' @param 
-#' Focal A strategy file to be used by the focal player. Name must match a legal function file: i.e., "ALLC", "TFT", "GTFT", "TFTA", etc.
+#' focal A strategy file to be used by the focal player. Name must match a legal function file: i.e., "ALLC", "TFT", "GTFT", "TFTA", etc.
 #' @param 
-#' Partner A strategy file to be used by the partner player. Name must match a legal function file: i.e., "ALLC", "TFT", "GTFT", "TFTA", etc.
+#' partner A strategy file to be used by the partner player. Name must match a legal function file: i.e., "ALLC", "TFT", "GTFT", "TFTA", etc.
 #' @param 
 #' seed A seed for the random number generator for reproducible plots.
 #' @param 
@@ -20,11 +20,11 @@
 #' @export
 
 
-sequence_plot = function(Focal="ATFT", Partner="ATFT", seed=1234, n_rounds=20, error_rate=0.1, arb_error_rate_type_1=0.5, arb_error_rate_type_2=0.5, 
+sequence_plot = function(focal="ATFT", partner="ATFT", seed=1234, n_rounds=20, error_rate=0.1, arb_error_rate_type_1=0.5, arb_error_rate_type_2=0.5, 
                          colors=c("No" = "#ffeda0", "Defect" = "darkred", "Good Standing" = "#7fcdbb", "Bad Standing" = "grey13", "Cooperate" = "white", "Yes" = "#0c2c84")){
 set.seed(seed)
  n_rounds = n_rounds + 1
- d = simulate_round_robin(players=rep(c(Focal,Partner,Partner) , 1), 
+ d = simulate_round_robin(players=rep(c(focal,partner,partner) , 1), 
                           n_rounds=n_rounds,
                           error_rate=error_rate, 
                           arb_error_rate_type_1=arb_error_rate_type_1,
