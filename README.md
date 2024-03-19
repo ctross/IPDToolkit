@@ -38,10 +38,10 @@ To visualize play between specific strategy types, use the sequence_plot functio
 ###################################### Example 1, plot move sequences
 # Plot specific strategies against each other
 colors = c("No" = "#ffeda0", "Defect" = "darkred", "Good Standing" = "#7fcdbb", "Bad Standing" = "grey13", "Cooperate" = "white", "Yes" = "#0c2c84")
-p1 = sequence_plot(Focal="TFT", Partner="TFT",   seed=14534, n_rounds=10, error_rate=0.2, arb_error_rate_type_1=0.5, arb_error_rate_type_2=0.5, colors=colors)
-p2 = sequence_plot(Focal="TFT", Partner="GTFT",  seed=3522143, n_rounds=10, error_rate=0.2, arb_error_rate_type_1=0.5, arb_error_rate_type_2=0.5, colors=colors)
-p3 = sequence_plot(Focal="TFT", Partner="TFTA",  seed=145234, n_rounds=10, error_rate=0.2, arb_error_rate_type_1=0.5, arb_error_rate_type_2=0.5, colors=colors)
-p4 = sequence_plot(Focal="ATFT", Partner="ATFT", seed=14534, n_rounds=10, error_rate=0.2, arb_error_rate_type_1=0.5, arb_error_rate_type_2=0.5, colors=colors)
+p1 = sequence_plot(focal="TFT", partner="TFT",   seed=14534, n_rounds=10, error_rate=0.2, arb_error_rate_type_1=0.5, arb_error_rate_type_2=0.5, colors=colors)
+p2 = sequence_plot(focal="TFT", partner="GTFT",  seed=3522143, n_rounds=10, error_rate=0.2, arb_error_rate_type_1=0.5, arb_error_rate_type_2=0.5, colors=colors)
+p3 = sequence_plot(focal="TFT", partner="TFTA",  seed=145234, n_rounds=10, error_rate=0.2, arb_error_rate_type_1=0.5, arb_error_rate_type_2=0.5, colors=colors)
+p4 = sequence_plot(focal="ATFT", partner="ATFT", seed=14534, n_rounds=10, error_rate=0.2, arb_error_rate_type_1=0.5, arb_error_rate_type_2=0.5, colors=colors)
 
 ggsave("TFTvTFT.pdf", p1, width=8*0.9,height=8*0.9)
 ggsave("TFTvGTFT.pdf", p2, width=8*0.9,height=8*0.9)
