@@ -8,7 +8,7 @@ model{
  to_vector(beta) ~ normal(0,5);
 
 for (i in 1:N_individuals){ 
- to_vector(chi[i]) ~ normal(0,50);
+ to_vector(chi[i]) ~ normal(0,5);
  }
 
  alpha_hat ~ normal(0,5);
