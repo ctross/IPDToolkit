@@ -11,7 +11,7 @@ for (i in 1:N_individuals){
 
  alpha ~ beta(11,1);
  pi ~ beta(6,6);
- psi ~ beta(8,4);
+ psi ~ beta(4,8);
  xi ~ beta(1,11);
 
 //# Done accumulating terms, now add to target with proper mixture probabilities
