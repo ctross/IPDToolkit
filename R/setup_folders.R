@@ -12,7 +12,8 @@
 setup_folders = function(path=path, import_code=TRUE, overwrite=FALSE){
   if (!dir.exists(file.path(path, "PrisonersDilema"))) {
   dir.create(file.path(path, "PrisonersDilema"))
-  
+
+  dir.create(file.path(paste0(path,"/","PrisonersDilema"),"Results"))
   dir.create(file.path(paste0(path,"/","PrisonersDilema"),"DataTables"))
   dir.create(file.path(paste0(path,"/","PrisonersDilema"),"StrategiesR"))
   dir.create(file.path(paste0(path,"/","PrisonersDilema"),"StrategiesStan"))
